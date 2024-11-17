@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>    
+<script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-storage-compat.js"></script>
+<body>
+<div>
+    <h1>post product</h1>
+    <h1><a href="viewproduct.html">View Products</a></h1>
+</div>
+    <div id="username"></div> 
+  <button onclick="signout()"></button> 
+  <div class="col">
+    <h1>Post a Product</h1>
+    <form action="">
+       <div>
+         <label for="">Product Name</label>
+        <input id="prod_name" type="text"> 
+    </div> <br>
+       <div>
+         <label for="">Product price</label>
+        <input id="prod_price" type="text"> 
+    </div>
+       <div> 
+        <label for="">Product image</label>
+        <input onchange="choose()" id="prod_image" type="file">
+     </div>
+       <div>
+         <label for="">Product description</label>
+        <input id="prod_des" type="text">
+     </div>
+         <div></div>
+         <button onclick="postProduct(event)">add</button>
+    </div>
+    </form>
+  </div>
+</body>
+</html>
+<script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyDdgxTP-0SqK4sf9CCLjvVd8DW2c5KFnjE",
+      authDomain: "zima-2435c.firebaseapp.com",
+      projectId: "zima-2435c",
+      storageBucket: "zima-2435c.appspot.com",
+      messagingSenderId: "724363201852",
+      appId: "1:724363201852:web:c1994c090dc03d9cb0a239"
+    };
+  
+    // Initialize Firebase
+    const app =firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+    var storageRef = firebase.storage().ref();
+  </script>
+   <script>
+    let username=document.getElementById("username")
+    function isloggedin(){
+        firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+    // User is signed in, see docs for a list of available properties
+    // https://firebase.google.com/docs/reference/js/v8/firebase.User
+    var uid = user.uid;
+     console.log(user);
+     username.innerHTML=user.displayName
+  } else {
+   alert("user is not logged in")
+   window.location.href="log.html"
+  }
+});
+    }
+
+    isloggedin()
+
+ let prod_des=document.getElementById("prod_des")
+ let prod_price=document.getElementById("prod_price")
+ let prod_name=document.getElementById("prod_name")
+ let prod_image;
+
+function postProduct(ev){
+    ev.preventDefault();
+    ev.target.innerHTML="posting..."
+db.collection("products").doc().set({
+   prod_name: prod_name.value,
+    prod_des: prod_des.value,
+   prod_price: prod_price.value,
+   prod_image:""
+})
+.then(() => {
+    console.log("Document successfully written!");
+    alert("product added")
+    ev.target.innerHTML="posting..."
+
+})
+.catch((error) => {
+    console.error("Error writing document: ", error);
+    alert("something went wrong")
+});
+}
+ 
+
+
+
+    function signout(){
+        firebase.auth().signOut().then(() => {
+  // Sign-out successful.
+}).catch((error) => {
+  // An error happened.
+});
+    }
+   </script>

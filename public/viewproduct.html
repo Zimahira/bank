@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>   
+<body>
+    <div class="row">
+        <div>
+            <h1><a href="index.html">POST PRODUCT</a></h1>
+            <h1>VIEW PRODUCT</h1>
+        </div>
+        <div id="disp"></div>
+    </div>
+</body>
+</html>
+<script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyDdgxTP-0SqK4sf9CCLjvVd8DW2c5KFnjE",
+      authDomain: "zima-2435c.firebaseapp.com",
+      projectId: "zima-2435c",
+      storageBucket: "zima-2435c.appspot.com",
+      messagingSenderId: "724363201852",
+      appId: "1:724363201852:web:c1994c090dc03d9cb0a239"
+    };
+  
+    // Initialize Firebase
+    const app =firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+  </script>
+
+
+<script>
+  function isloggedin(){
+        firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+    // User is signed in, see docs for a list of available properties
+    // https://firebase.google.com/docs/reference/js/v8/firebase.User
+    var uid = user.uid;
+     console.log(user);
+    //  username.innerHTML=user.displayName
+  } else {
+   alert("user is not logged in")
+   window.location.href="log.html"
+  }
+});
+    }
+
+    isloggedin()
+
+
+
+
+let disp=document.getElementById("disp")
+
+function disProduct(){
+    db.collection("products").get().then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+        // doc.data() is never undefined for query doc snapshots
+        console.log(doc.id, " => ", doc.data());
+        console.log(doc.data().prod_des);
+        disp.innerHTML+=`
+    <div class="card">
+        <h4>${doc.data().prod_name} </h4> 
+        <p> ${doc.data().prod_des}</p>
+        <imag src="${doc.data().prod_image}">
+        </div>
+        
+        `
+    });
+});
+}
+disProduct()
+</script>

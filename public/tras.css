@@ -1,0 +1,89 @@
+.boddy{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: rgb(139, 30, 67);
+    color: black;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+
+  }
+
+.Mbank{
+    padding-top: 3%;
+     padding-bottom: 3%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;   
+    width: 40%;
+    box-shadow: 0 0 5px wheat;
+    border-radius: 0.2rem;
+
+}
+
+
+.firstline{
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+    width: 95%;
+    border-radius: 1rem;
+    background-color:rgb(139, 30, 67);
+    margin-bottom: 5%;
+    color: white;
+    padding: 2%;
+    
+}
+
+.firstll{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: larger;
+    padding: 1%;
+    margin-bottom: 3%;
+}
+.secondline{
+    color: rgb(139, 30, 67);
+}
+
+.thirdline{
+    width: 95%;
+}
+
+.inputs{
+    width: 95%;
+    border: 3px solid rgb(139, 30, 67 );
+    border-radius: 0.3rem;
+    padding: 2%;
+    margin-bottom: 2%;
+}
+
+.fourthline{
+    margin-top: 2%;
+    width: 95%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.transfer{
+    background-color:rgb(139, 30, 67);
+     width: 98%;
+     padding: 2%;
+     color: white;
+     font-size: larger;
+     border: none;
+     border-radius: 3%;
+}
+
+.goback{
+    width: 98%;
+    margin-bottom: 2%;
+}
+.links{
+    color: rgb(139, 30, 67) ;
+    text-decoration: none;
+} 

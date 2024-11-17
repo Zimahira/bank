@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+</head>
+<script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-auth.js"></script>
+<link rel="stylesheet" href="sign.css">
+<body>
+  <center class="dc">
+      
+    <h2>SIGN UP</h2>
+    <input type="text" placeholder="Firstname" id="Firstname"> <br>
+    <input type="text" placeholder="lastname" id="lastname"> <br>
+    <input type="email" placeholder="Email" id="Email"> <br>
+<div class="passwordd"><input id="password" type="password" placeholder="*******" > <button type="button" onclick="showhide()">s</button> <br></div>
+    <input type="password" placeholder="password" id="cpass"> <br>
+    <input type="number" placeholder="phonenumber" id="phonenumber"> <br>
+    <input type="number" placeholder="pin" id="pin"> <br>
+    <span><input type="checkbox" id="checkbox_"> <label>I agree with the terms and conditions.</label> </span> <br>
+    <button class="buttonz" onclick="submit(event)">SIGN UP</button> <br>
+  </center>
+</body>
+<script src="signup.js"></script>
+</html>
